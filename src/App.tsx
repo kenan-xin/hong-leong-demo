@@ -1,4 +1,6 @@
 import '@mantine/core/styles.css';
+import '@mantine/dropzone/styles.css';
+import '@mantine/nprogress/styles.css';
 
 import { MantineProvider } from '@mantine/core';
 import { Router } from './Router';

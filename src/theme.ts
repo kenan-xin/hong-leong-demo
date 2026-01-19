@@ -1,5 +1,4 @@
 import { createTheme } from '@mantine/core';
+import { hlbTheme } from './hlb-theme';
 
-export const theme = createTheme({
-  /** Put your mantine theme override here */
-});
+export const theme = createTheme(hlbTheme);
