@@ -25,7 +25,7 @@ async function analyzeApplication({
   });
 
   if (!response.ok) {
-    throw new Error('Failed to analyze application');
+    throw new Error('Failed to analyse application');
   }
 
   return response.json();

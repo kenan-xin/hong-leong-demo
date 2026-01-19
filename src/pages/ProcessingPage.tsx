@@ -11,7 +11,7 @@ interface ProcessingStep {
 
 const PROCESSING_STEPS: ProcessingStep[] = [
   { id: 1, text: 'Verifying company information' },
-  { id: 2, text: 'Analyzing ownership structure' },
+  { id: 2, text: 'Analysing ownership structure' },
   { id: 3, text: 'Checking eligibility criteria' },
   { id: 4, text: 'Running credit assessment' },
 ];
@@ -96,7 +96,7 @@ export function ProcessingPage() {
           Processing Application
         </Title>
         <Text c="dimmed" ta="center">
-          Please wait while we analyze the documents
+          Please wait while we analyse the documents
         </Text>
 
         <Paper p="xl" radius="sm" shadow="xs" withBorder w="100%">

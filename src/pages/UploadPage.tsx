@@ -41,7 +41,7 @@ export function UploadPage() {
           onClick={handleAnalyze}
           disabled={!applicationForm || !creditReport}
         >
-          Analyze Application
+          Analyse Application
         </Button>
       </Stack>
     </Container>
