@@ -1,10 +1,18 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { HomePage } from './pages/Home.page';
+import { AppShell } from './components/layout/AppShell';
+import { UploadPage } from './pages/UploadPage';
+import { ProcessingPage } from './pages/ProcessingPage';
+import { ResultsPage } from './pages/ResultsPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <HomePage />,
+    element: <AppShell />,
+    children: [
+      { index: true, element: <UploadPage /> },
+      { path: 'processing', element: <ProcessingPage /> },
+      { path: 'results', element: <ResultsPage /> },
+    ],
   },
 ]);
 

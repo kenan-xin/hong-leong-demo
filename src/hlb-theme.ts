@@ -103,8 +103,8 @@ export const hlbTheme: MantineThemeOverride = {
       },
       styles: () => ({
         root: {
-          borderColor: 'var(--mantine-color-bankGray-2)',
-          backgroundColor: '#ffffff',
+          borderColor: 'light-dark(var(--mantine-color-bankGray-2), var(--mantine-color-bankGray-7))',
+          backgroundColor: 'light-dark(#ffffff, var(--mantine-color-bankGray-9))',
         },
       }),
     },
@@ -112,13 +112,18 @@ export const hlbTheme: MantineThemeOverride = {
     Table: {
       styles: () => ({
         th: {
-          backgroundColor: 'var(--mantine-color-bankGray-1)',
+          backgroundColor: 'light-dark(var(--mantine-color-bankGray-1), var(--mantine-color-bankGray-9))',
           fontWeight: 600,
           fontSize: 12,
-          color: 'var(--mantine-color-bankGray-8)',
+          color: 'light-dark(var(--mantine-color-bankGray-8), var(--mantine-color-bankGray-2))',
         },
         td: {
           fontSize: 13,
+        },
+        tr: {
+          '&:not(:last-of-type)': {
+            borderBottomColor: 'light-dark(var(--mantine-color-bankGray-2), var(--mantine-color-bankGray-8))',
+          },
         },
       }),
     },
