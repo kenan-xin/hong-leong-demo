@@ -1,5 +1,5 @@
 import { useRef, useMemo, useState, useCallback } from 'react';
-import { Button, Container, Group, SimpleGrid, Stack } from '@mantine/core';
+import { Button, Container, Group, SimpleGrid, Stack, Text, Title, rem } from '@mantine/core';
 import { IconArrowLeft } from '@tabler/icons-react';
 import { useNavigate } from 'react-router-dom';
 import { useApplicationStore } from '../stores/applicationStore';
@@ -83,51 +83,57 @@ export function ResultsPage() {
         </Group>
 
         <div ref={contentRef} id="results-content" style={{ padding: '8px' }}>
-          <Stack gap="lg">
-            <div id="decision-banner">
-              <DecisionBanner result={result} highlightedIssueNumber={highlightedIssueNumber} />
-            </div>
+          {/* Page 1 Content */}
+          <div id="page-1" data-page="1">
+            <Stack gap="lg">
+              <div id="decision-banner">
+                <DecisionBanner result={result} highlightedIssueNumber={highlightedIssueNumber} />
+              </div>
 
-            <SimpleGrid cols={{ base: 1, lg: 2 }}>
-              <CompanyOverview
-                result={result}
-                hasIssue={result.entity_type_issue}
-                issueNumber={getIssueNumber('entity')}
+              <SimpleGrid cols={{ base: 1, lg: 2 }}>
+                <CompanyOverview
+                  result={result}
+                  hasIssue={result.entity_type_issue}
+                  issueNumber={getIssueNumber('entity')}
+                  onIssueClick={handleIssueClick}
+                />
+                <ContactInfo result={result} />
+              </SimpleGrid>
+
+              <CompanyOwners
+                owners={result.company_owners}
+                hasIssue={result.ownership_issue}
+                issueNumber={getIssueNumber('ownership')}
                 onIssueClick={handleIssueClick}
               />
-              <ContactInfo result={result} />
-            </SimpleGrid>
-
-            <CompanyOwners
-              owners={result.company_owners}
-              hasIssue={result.ownership_issue}
-              issueNumber={getIssueNumber('ownership')}
-              onIssueClick={handleIssueClick}
-            />
-            <Shareholders
-              shareholders={result.shareholders}
-              hasIssue={result.ownership_issue}
-              issueNumber={getIssueNumber('ownership')}
-              onIssueClick={handleIssueClick}
-            />
-
-            <SimpleGrid cols={{ base: 1, lg: 2 }}>
-              <LoanDetails result={result} />
-              <FinancialIndicators
-                result={result}
-                hasIssue={result.issued_capital_issue}
-                issueNumber={getIssueNumber('capital')}
+              <Shareholders
+                shareholders={result.shareholders}
+                hasIssue={result.ownership_issue}
+                issueNumber={getIssueNumber('ownership')}
                 onIssueClick={handleIssueClick}
               />
-            </SimpleGrid>
 
+              <SimpleGrid cols={{ base: 1, lg: 2 }}>
+                <LoanDetails result={result} />
+                <FinancialIndicators
+                  result={result}
+                  hasIssue={result.issued_capital_issue}
+                  issueNumber={getIssueNumber('capital')}
+                  onIssueClick={handleIssueClick}
+                />
+              </SimpleGrid>
+            </Stack>
+          </div>
+
+          {/* Page 2 Content */}
+          <div id="page-2" data-page="2" style={{ pageBreakBefore: 'always', breakBefore: 'page' }}>
             <LitigationInfo
               litigation={result.litigation_information}
               hasIssue={result.litigation_issue}
               issueNumber={getIssueNumber('litigation')}
               onIssueClick={handleIssueClick}
             />
-          </Stack>
+          </div>
         </div>
       </Stack>
     </Container>
