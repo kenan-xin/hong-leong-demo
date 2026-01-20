@@ -9,6 +9,7 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './vitest.setup.mjs',
   },
+  base:"/hl-bank-demo/",
   server: {
     port: 3000,
   },
